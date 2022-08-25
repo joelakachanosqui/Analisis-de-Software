@@ -19,8 +19,8 @@ public class Main {
 		
 		scanner.close();
 		
-		if(ladoA <=0 || ladoB <=0 || ladoC <=0) {
-			System.out.println("Error: Valor ingresado negativo");
+		if(ladoA <0 || ladoB <0 || ladoC <0) {
+			System.out.println("Error: El valor ingresado debe ser mayor a cero");
 			return;
 		} 
 		
