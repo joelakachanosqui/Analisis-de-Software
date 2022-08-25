@@ -19,6 +19,11 @@ public class Main {
 		
 		scanner.close();
 		
+		if(ladoA <=0 || ladoB <=0 || ladoC <=0) {
+			System.out.println("Error: Valor ingresado negativo");
+			return;
+		} 
+		
 		Triangulo triangulo = new Triangulo(ladoA, ladoB, ladoC);
 		
 		tipoTriangulo = triangulo.tipoTriangulo();
