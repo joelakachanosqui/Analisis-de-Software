@@ -26,13 +26,15 @@ public class Main {
 		}finally {
 			scanner.close();
 		}
+
 		
-		if(ladoA <0 || ladoB <0 || ladoC <0) {
-			System.out.println("Error: Los valores ingresados deben ser mayores a cero");
+		Triangulo triangulo = null;
+		try {
+			triangulo = new Triangulo(ladoA, ladoB, ladoC);			
+		}catch(TrianguloException e) {
+			System.out.println(e.getMessage());
 			return;
-		} 
-		
-		Triangulo triangulo = new Triangulo(ladoA, ladoB, ladoC);
+		}
 		
 		tipoTriangulo = triangulo.tipoTriangulo();
 		
