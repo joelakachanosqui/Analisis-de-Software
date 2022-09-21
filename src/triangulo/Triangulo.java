@@ -1,4 +1,4 @@
-package Triangulo;
+package triangulo;
 
 public class Triangulo {
 	private int ladoA, ladoB, ladoC;

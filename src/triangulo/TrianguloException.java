@@ -1,4 +1,4 @@
-package Triangulo;
+package triangulo;
 
 @SuppressWarnings("serial")
 public class TrianguloException extends Exception{
