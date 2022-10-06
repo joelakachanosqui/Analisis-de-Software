@@ -84,7 +84,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaQueryDelete obj = new VentanaQueryDelete();
+				VentanaQueryDelete obj = new VentanaQueryDelete("D");
 				obj.setVisible(true);
 				
 			}
@@ -94,8 +94,17 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaQueryDelete obj = new VentanaQueryDelete();
+				VentanaQueryDelete obj = new VentanaQueryDelete("Q");
 				obj.setVisible(true);
+				
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 				
 			}
 		});

@@ -28,7 +28,7 @@ public class VentanaQueryDelete extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaQueryDelete frame = new VentanaQueryDelete();
+					VentanaQueryDelete frame = new VentanaQueryDelete(args[0]);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,8 +40,8 @@ public class VentanaQueryDelete extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaQueryDelete() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public VentanaQueryDelete(String modo) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -111,9 +111,19 @@ public class VentanaQueryDelete extends JFrame {
 		JButton btnBorrar = new JButton("Borrar");
 		btnBorrar.setBounds(285, 126, 89, 23);
 		contentPane.add(btnBorrar);
+		if(modo.equals("Q")) {
+			btnBorrar.setVisible(false);
+			lblBajaconsulta.setText("Consulta");
+			
+		}
+		
 		
 		JButton btnConsultar = new JButton("Consultar");
 		btnConsultar.setBounds(186, 126, 89, 23);
 		contentPane.add(btnConsultar);
+		if(modo.equals("D")) {
+			lblBajaconsulta.setText("Baja");
+			btnConsultar.setVisible(false);
+		}
 	}
 }
