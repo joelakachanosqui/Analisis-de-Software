@@ -27,7 +27,7 @@ public class VentanaAltaUpdate extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaAltaUpdate frame = new VentanaAltaUpdate();
+					VentanaAltaUpdate frame = new VentanaAltaUpdate(args[0]);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class VentanaAltaUpdate extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaAltaUpdate() {
+	public VentanaAltaUpdate(String modo) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 445, 300);
 		contentPane = new JPanel();
@@ -88,6 +88,11 @@ public class VentanaAltaUpdate extends JFrame {
 		JLabel lbltitulo = new JLabel("Alta/Actualizaci\u00F3n");
 		lbltitulo.setBounds(10, 0, 94, 14);
 		contentPane.add(lbltitulo);
+		if(modo.equals("A")) {
+			lbltitulo.setText("Alta");
+		}else {
+			lbltitulo.setText("Actualizaci\u00F3n");
+		}
 		
 		JLabel lblEdicion = new JLabel("Edicion");
 		lblEdicion.setBounds(10, 87, 46, 14);

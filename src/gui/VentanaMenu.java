@@ -66,7 +66,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaAltaUpdate obj = new VentanaAltaUpdate();
+				VentanaAltaUpdate obj = new VentanaAltaUpdate("A");
 				obj.setVisible(true);
 				
 			}
@@ -75,7 +75,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaAltaUpdate obj = new VentanaAltaUpdate();
+				VentanaAltaUpdate obj = new VentanaAltaUpdate("U");
 				obj.setVisible(true);
 				
 			}
