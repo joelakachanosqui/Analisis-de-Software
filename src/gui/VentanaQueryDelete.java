@@ -9,10 +9,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JList;
 
 public class VentanaQueryDelete extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4695130515793994997L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;

@@ -12,6 +12,10 @@ import javax.swing.JButton;
 
 public class VentanaAltaUpdate extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8789825435543818236L;
 	private JPanel contentPane;
 	private JTextField textISBN;
 	private JTextField textTitulo;

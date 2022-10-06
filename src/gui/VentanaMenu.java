@@ -11,6 +11,10 @@ import javax.swing.JButton;
 
 public class VentanaMenu extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7134417758283507094L;
 	private JPanel contentPane;
 
 	/**
@@ -38,24 +42,25 @@ public class VentanaMenu extends JFrame {
 		setBounds(100, 100, 445, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnDarAlta = new JButton("Altas");
-		btnDarAlta.setBounds(10, 48, 119, 23);
+		btnDarAlta.setBounds(10, 48, 147, 23);
 		contentPane.add(btnDarAlta);
 		
 		JButton btnActualizacion = new JButton("Actualizar registro");
-		btnActualizacion.setBounds(10, 82, 119, 23);
+		btnActualizacion.setBounds(10, 82, 147, 23);
 		contentPane.add(btnActualizacion);
 		
 		JButton btnBaja = new JButton("Dar de Baja");
-		btnBaja.setBounds(10, 116, 119, 23);
+		btnBaja.setBounds(10, 116, 147, 23);
 		contentPane.add(btnBaja);
 		
 		JButton btnConsultar = new JButton("Consultar");
-		btnConsultar.setBounds(10, 152, 119, 23);
+		btnConsultar.setBounds(10, 152, 147, 23);
 		contentPane.add(btnConsultar);
 		
 		JButton btnSalir = new JButton("Salir");
