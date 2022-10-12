@@ -9,32 +9,11 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class MainLibreria {
-
+//Definicion de Variables y recursos varios
 	public static Scanner teclado = new Scanner(System.in);
     public static PrintStream out = System.out;
-
-    public static void pausar(String mensage) {
-        out.print(mensage + "\nPresione <ENTER> para continuar . . . ");
-        teclado.nextLine();
-        out.println();
-    }
-
-    public static String leer_cadena(String mensaje) {
-        out.print(mensaje + ": ");
-        return teclado.nextLine();
-    }
-
-    public static int leer_entero(String mensaje) {
-        try {
-            return Integer.parseInt(leer_cadena(mensaje));
-        } catch (NumberFormatException e) {
-            out.print("N\u00FAmero incorrecto.");
-            return leer_entero(mensaje);
-        }
-    }
-
-    public static String ruta = "libros.tsv";
-
+    public static String ruta = "libros.tsv";   
+//Main
     public static void main(String[] args) {
 
         Funcion<Libro> imprimir = new Funcion<Libro>() {
@@ -57,42 +36,14 @@ public class MainLibreria {
                 archivo.print(libro.getAnno_de_publicacion() + "\n");
             }
         };
-        if(!System.getProperties().get("os.name").equals("Linux") && System.console()!=null)
-            try {
-                out = new PrintStream(System.out, true, "CP850");
-                teclado = new Scanner(System.in, "CP850");
-            } catch (UnsupportedEncodingException e) {}
-        Vector<Libro> vector = new Vector<Libro>();
+        Vector<Libro> vector = lecturaArchivo();
         int i, n;
         Libro dato = null, libro;
         int[] contador = {0};
         int opcion, subopcion;
-        String[] campos;
-        try {
-            Scanner entrada = new Scanner(new FileReader(ruta));
-            while (entrada.hasNextLine()) {
-                campos = entrada.nextLine().split("\t");
-                libro = new Libro();
-                libro.setISBN(campos[0]);
-                libro.setTitulo(campos[1]);
-                libro.setAutor(campos[2]);
-                libro.setEditorial(campos[3]);
-                libro.setEdicion(Integer.parseInt(campos[4]));
-                libro.setAnno_de_publicacion(Integer.parseInt(campos[5]));
-                vector.add(libro);
-            }
-            entrada.close();
-        } catch (FileNotFoundException e) {}
         libro = new Libro();
         do {
-            out.println("MEN\u00DA");
-            out.println("1.- Altas");
-            out.println("2.- Consultas");
-            out.println("3.- Actualizaciones");
-            out.println("4.- Bajas");
-            out.println("5.- Ordenar registros");
-            out.println("6.- Listar registros");
-            out.println("7.- Salir");
+        	mostrarMenuPrincipal();
             do {
                 opcion = leer_entero ("Seleccione una opci\u00F3n");
                 if(opcion<1 || opcion>7)
@@ -128,12 +79,7 @@ public class MainLibreria {
                 out.println("\nRegistro agregado correctamente.");
                 break;
             case 3:
-                out.println("Men\u00FA de modificaci\u00F3n de campos");
-                out.println("1.- titulo");
-                out.println("2.- autor");
-                out.println("3.- editorial");
-                out.println("4.- edicion");
-                out.println("5.- anno de publicacion");
+                mostrarMenuUpdate();
                 do {
                     subopcion = leer_entero ("Seleccione un n\u00FAmero de campo a modificar");
                     if (subopcion<1 || subopcion>5)
@@ -185,5 +131,75 @@ public class MainLibreria {
             salida.close();
         } catch (FileNotFoundException e) {}
     }
-	
+
+//Metodos auxiliares
+    public static void pausar(String mensage) {
+        out.print(mensage + "\nPresione <ENTER> para continuar . . . ");
+        teclado.nextLine();
+        out.println();
+    }
+
+    public static String leer_cadena(String mensaje) {
+        out.print(mensaje + ": ");
+        return teclado.nextLine();
+    }
+
+    public static int leer_entero(String mensaje) {
+        try {
+            return Integer.parseInt(leer_cadena(mensaje));
+        } catch (NumberFormatException e) {
+            out.print("N\u00FAmero incorrecto.");
+            return leer_entero(mensaje);
+        }
+    }
+    
+    public static Vector<Libro>  lecturaArchivo() {
+    	if(!System.getProperties().get("os.name").equals("Linux") && System.console()!=null)
+            try {
+                out = new PrintStream(System.out, true, "CP850");
+                teclado = new Scanner(System.in, "CP850");
+            } catch (UnsupportedEncodingException e) {}
+        Vector<Libro> vector = new Vector<Libro>();
+        int i, n;
+        Libro dato = null, libro;
+        int[] contador = {0};
+        int opcion, subopcion;
+        String[] campos;
+        try {
+            Scanner entrada = new Scanner(new FileReader(ruta));
+            while (entrada.hasNextLine()) {
+                campos = entrada.nextLine().split("\t");
+                libro = new Libro();
+                libro.setISBN(campos[0]);
+                libro.setTitulo(campos[1]);
+                libro.setAutor(campos[2]);
+                libro.setEditorial(campos[3]);
+                libro.setEdicion(Integer.parseInt(campos[4]));
+                libro.setAnno_de_publicacion(Integer.parseInt(campos[5]));
+                vector.add(libro);
+            }
+            entrada.close();
+        } catch (FileNotFoundException e) {} //Lectura
+    	return vector;
+    }
+    
+    public static void mostrarMenuPrincipal() {
+    	out.println("MEN\u00DA");
+        out.println("1.- Altas");
+        out.println("2.- Consultas");
+        out.println("3.- Actualizaciones");
+        out.println("4.- Bajas");
+        out.println("5.- Ordenar registros");
+        out.println("6.- Listar registros");
+        out.println("7.- Salir");
+    }
+    
+    public static void mostrarMenuUpdate() {
+    	out.println("Men\u00FA de modificaci\u00F3n de campos");
+        out.println("1.- titulo");
+        out.println("2.- autor");
+        out.println("3.- editorial");
+        out.println("4.- edicion");
+        out.println("5.- anno de publicacion");
+    }
 }
