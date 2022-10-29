@@ -63,10 +63,12 @@ public class MainLibreria {
                     imprimir.funcion(dato, contador);
                 }
             }
-            if (opcion==1 && dato!=null)
-                out.println("El registro ya existe.");
-            else if (opcion>=2 && opcion<=4 && dato==null)
-                out.println("\nRegistro no encontrado.");
+            if (opcion==1 && dato!=null) {
+            	out.println("El registro ya existe.");
+            }    
+            else if (opcion>=2 && opcion<=4 && dato==null) {
+            	out.println("\nRegistro no encontrado.");
+            }
             else switch (opcion) {
             case 1:
                 libro.setTitulo(leer_cadena ("Ingrese el titulo"));
@@ -80,28 +82,7 @@ public class MainLibreria {
                 break;
             case 3:
                 mostrarMenuUpdate();
-                do {
-                    subopcion = leer_entero ("Seleccione un n\u00FAmero de campo a modificar");
-                    if (subopcion<1 || subopcion>5)
-                        out.println("Opci\u00F3n no v\u00E1lida.");
-                } while (subopcion<1 || subopcion>5);
-                switch (subopcion) {
-                    case 1:
-                        dato.setTitulo(leer_cadena ("Ingrese el nuevo titulo"));
-                        break;
-                    case 2:
-                        dato.setAutor(leer_cadena ("Ingrese el nuevo autor"));
-                        break;
-                    case 3:
-                        dato.setEditorial(leer_cadena ("Ingrese el nuevo editorial"));
-                        break;
-                    case 4:
-                        dato.setEdicion(leer_entero ("Ingrese el nuevo edicion"));
-                        break;
-                    case 5:
-                        dato.setAnno_de_publicacion(leer_entero ("Ingrese el nuevo anno de publicacion"));
-                        break;
-                }
+                actualizar(libro);
                 out.println("\nRegistro actualizado correctamente.");
                 break;
             case 4:
@@ -201,5 +182,31 @@ public class MainLibreria {
         out.println("3.- editorial");
         out.println("4.- edicion");
         out.println("5.- anno de publicacion");
+    }
+    
+    public static void actualizar(Libro dato) {
+    	int subopcion;
+    	do {
+            subopcion = leer_entero ("Seleccione un n\u00FAmero de campo a modificar");
+            if (subopcion<1 || subopcion>5)
+                out.println("Opci\u00F3n no v\u00E1lida.");
+        } while (subopcion<1 || subopcion>5);
+        switch (subopcion) {
+            case 1:
+                dato.setTitulo(leer_cadena ("Ingrese el nuevo titulo"));
+                break;
+            case 2:
+                dato.setAutor(leer_cadena ("Ingrese el nuevo autor"));
+                break;
+            case 3:
+                dato.setEditorial(leer_cadena ("Ingrese el nuevo editorial"));
+                break;
+            case 4:
+                dato.setEdicion(leer_entero ("Ingrese el nuevo edicion"));
+                break;
+            case 5:
+                dato.setAnno_de_publicacion(leer_entero ("Ingrese el nuevo anno de publicacion"));
+                break;
+        }
     }
 }
