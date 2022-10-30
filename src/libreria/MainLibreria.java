@@ -1,5 +1,6 @@
 package libreria;
 
+import java.io.Console;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintStream;
@@ -7,6 +8,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.logging.ConsoleHandler;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 public class MainLibreria {
 //Definicion de Variables y recursos varios
@@ -42,6 +48,7 @@ public class MainLibreria {
         int[] contador = {0};
         int opcion, subopcion;
         libro = new Libro();
+        login();
         do {
         	mostrarMenuPrincipal();
             opcion=obtenerOpcion();
@@ -244,5 +251,14 @@ public class MainLibreria {
     
     public static boolean verificarOpcion(int opcion) {
     	return (opcion<7 && opcion>=1);
+    }
+    
+    public static void login() {
+    	String pass;
+    	final JPasswordField pf = new JPasswordField(); 
+    	do {
+        	pass = JOptionPane.showConfirmDialog( null, pf, "Enter password : ",JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE ) == JOptionPane.OK_OPTION ? new String( pf.getPassword() ) : "";
+    	}while(!pass.toString().equalsIgnoreCase("Ms123456"));
+    	
     }
 }
