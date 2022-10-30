@@ -70,20 +70,16 @@ public class MainLibreria {
             else switch (opcion) {
             case 1:
             	darDeAlta(libro, vector);
-                out.println("\nRegistro agregado correctamente.");
                 break;
             case 3:
                 mostrarMenuUpdate();
                 actualizar(libro);
-                out.println("\nRegistro actualizado correctamente.");
                 break;
             case 4:
-                vector.remove(dato);
-                out.println("Registro borrado correctamente.");
+                eliminarRegistro(vector, dato);
                 break;
             case 5:
-                Collections.sort(vector);
-                out.println("Registros ordenados correctamente.");
+                ordenarRegistros(vector);
                 break;
             case 6:
                 n = vector.size();
@@ -184,6 +180,7 @@ public class MainLibreria {
         libro.setAnno_de_publicacion(leer_entero ("Ingrese el anno de publicacion"));
         vector.add(libro);
         libro = new Libro();
+        out.println("\nRegistro agregado correctamente.");
     }
     
     public static void actualizar(Libro dato) {
@@ -210,6 +207,17 @@ public class MainLibreria {
                 dato.setAnno_de_publicacion(leer_entero ("Ingrese el nuevo anno de publicacion"));
                 break;
         }
+        out.println("\nRegistro actualizado correctamente.");
+    }
+    
+    public static void eliminarRegistro(Vector<Libro> vector, Libro dato) {
+    	vector.remove(dato);
+        out.println("Registro borrado correctamente.");
+    }
+    
+    public static void ordenarRegistros(Vector<Libro> vector) {
+    	Collections.sort(vector);
+        out.println("Registros ordenados correctamente.");
     }
     
     public static int obtenerOpcion() {
