@@ -44,16 +44,13 @@ public class MainLibreria {
         libro = new Libro();
         do {
         	mostrarMenuPrincipal();
-            do {
-                opcion = leer_entero ("Seleccione una opci\u00F3n");
-                if(opcion<1 || opcion>7)
-                    out.println("Opci\u00F3nn no v\u00E1lida.");
-            } while (opcion<1 || opcion>7);
+            opcion=obtenerOpcion();
             out.println();
-            if (vector.isEmpty() && opcion!=1 && opcion!=7) {
+            if ( verificarExistenciaLibro(vector, opcion)) {
                 pausar("No hay registros.\n");
                 continue;
             }
+            
             if (opcion<5) {
                 libro.setISBN(leer_cadena ("Ingrese el ISBN del libro"));
                 i = vector.indexOf(libro);
@@ -63,10 +60,11 @@ public class MainLibreria {
                     imprimir.funcion(dato, contador);
                 }
             }
-            if (opcion==1 && dato!=null) {
+            
+            if (verificarExistenciaRegistro(opcion, dato)) {
             	out.println("El registro ya existe.");
             }    
-            else if (opcion>=2 && opcion<=4 && dato==null) {
+            else if (verificarInexistenciaRegistro(opcion, dato)) {
             	out.println("\nRegistro no encontrado.");
             }
             else switch (opcion) {
@@ -208,5 +206,27 @@ public class MainLibreria {
                 dato.setAnno_de_publicacion(leer_entero ("Ingrese el nuevo anno de publicacion"));
                 break;
         }
+    }
+    
+    public static int obtenerOpcion() {
+    	int opcion;
+    	do {
+            opcion = leer_entero ("Seleccione una opci\u00F3n");
+            if(opcion<1 || opcion>7)
+                out.println("Opci\u00F3nn no v\u00E1lida.");
+        } while (opcion<1 || opcion>7);
+    	return opcion;
+    }
+    
+    public static boolean verificarExistenciaLibro(Vector<Libro> vector, int opcion) {
+    	return (vector.isEmpty() && opcion!=1 && opcion!=7);
+    }
+    
+    public static boolean verificarExistenciaRegistro(int opcion, Libro dato) {
+    	return (opcion==1 && dato!=null);
+    }
+    
+    public static boolean verificarInexistenciaRegistro(int opcion, Libro dato) {
+    	return (opcion>=2 && opcion<=4 && dato==null);
     }
 }
