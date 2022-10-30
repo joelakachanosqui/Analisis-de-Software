@@ -69,13 +69,7 @@ public class MainLibreria {
             }
             else switch (opcion) {
             case 1:
-                libro.setTitulo(leer_cadena ("Ingrese el titulo"));
-                libro.setAutor(leer_cadena ("Ingrese el autor"));
-                libro.setEditorial(leer_cadena ("Ingrese el editorial"));
-                libro.setEdicion(leer_entero ("Ingrese el edicion"));
-                libro.setAnno_de_publicacion(leer_entero ("Ingrese el anno de publicacion"));
-                vector.add(libro);
-                libro = new Libro();
+            	darDeAlta(libro, vector);
                 out.println("\nRegistro agregado correctamente.");
                 break;
             case 3:
@@ -99,7 +93,7 @@ public class MainLibreria {
                 out.println("Total de registros: " + contador[0] + ".");
                 break;
             }
-            if (opcion<7 && opcion>=1)
+            if (verificarOpcion(opcion))
                 pausar("");
         } while (opcion!=7);
         try {
@@ -182,6 +176,16 @@ public class MainLibreria {
         out.println("5.- anno de publicacion");
     }
     
+    public static void darDeAlta(Libro libro, Vector<Libro> vector) {
+    	libro.setTitulo(leer_cadena ("Ingrese el titulo"));
+        libro.setAutor(leer_cadena ("Ingrese el autor"));
+        libro.setEditorial(leer_cadena ("Ingrese el editorial"));
+        libro.setEdicion(leer_entero ("Ingrese el edicion"));
+        libro.setAnno_de_publicacion(leer_entero ("Ingrese el anno de publicacion"));
+        vector.add(libro);
+        libro = new Libro();
+    }
+    
     public static void actualizar(Libro dato) {
     	int subopcion;
     	do {
@@ -228,5 +232,9 @@ public class MainLibreria {
     
     public static boolean verificarInexistenciaRegistro(int opcion, Libro dato) {
     	return (opcion>=2 && opcion<=4 && dato==null);
+    }
+    
+    public static boolean verificarOpcion(int opcion) {
+    	return (opcion<7 && opcion>=1);
     }
 }
