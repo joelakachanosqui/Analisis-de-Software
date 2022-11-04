@@ -193,6 +193,7 @@ public class MainLibreria {
     public static void actualizar(Libro dato, Vector<Libro> vector) {
     	int subopcion, i;
     	i=vector.indexOf(dato);
+    	vector.remove(i);
     	do {
             subopcion = leer_entero ("Seleccione un n\u00FAmero de campo a modificar");
             if (subopcion<1 || subopcion>5)
@@ -215,7 +216,7 @@ public class MainLibreria {
                 dato.setAnno_de_publicacion(leer_entero ("Ingrese el nuevo anno de publicacion"));
                 break;
         }
-        vector.remove(dato);
+        //vector.remove(dato);
         vector.add(dato);
         out.println("\nRegistro actualizado correctamente.");
     }
