@@ -47,9 +47,9 @@ public class MainLibreria {
         Libro dato = null, libro;
         int[] contador = {0};
         int opcion, subopcion;
-        libro = new Libro();
         login();
         do {
+        	libro = new Libro();
         	mostrarMenuPrincipal();
             opcion=obtenerOpcion();
             out.println();
